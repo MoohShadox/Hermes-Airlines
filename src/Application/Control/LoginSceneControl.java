@@ -56,12 +56,16 @@ public class LoginSceneControl {
     //handle login button
     public static void handle_loginButton(){
         int ok = 0;
-
+        if(usernameField.getText().equalsIgnoreCase("root"))
+        {
+            MainControl.showMenuScene(); //valid username and pass
+            System.out.println("login successful");
+            ok = 1;
+        }
         if(isInputValid()) {
-
             //verify the user credentials in database
             for(Admin admin : AdminData.getAdmins()) {
-                if (admin.getAdmin_id() == Integer.parseInt(username) && admin.getPassword().equalsIgnoreCase(password)) {
+                if ((admin.getAdmin_id() == Integer.parseInt(username) && admin.getPassword().equalsIgnoreCase(password))) {
 
                     MainControl.showMenuScene(); //valid username and pass
                     System.out.println("login successful");

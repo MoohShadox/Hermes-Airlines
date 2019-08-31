@@ -11,8 +11,8 @@ public class DataConnection {
 
     //fields
     private static Connection connection;
-    private static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/hermes_airline?autoReconnect=true&useSSL=false";
+    private static String JDBC_DRIVER = "org.sqlite.JDBC";
+    private static final String DATABASE_URL = "jdbc:sqlite:C:/Users/Geekzone/Desktop/Hermes-Airlines4\\Test";
     private static String userName = UserPass.getUserName(); //user credentials sored in UserPass
     private static String password = UserPass.getPassword();
 
@@ -22,7 +22,6 @@ public class DataConnection {
         try {
             Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DATABASE_URL, userName, password);
-
             System.out.println("database connection success");
         }
 
@@ -33,6 +32,9 @@ public class DataConnection {
         }
     }
 
+    public static void main(String[] prm){
+        connect();
+    }
 
     //getters
     public static Connection getConnection() {
